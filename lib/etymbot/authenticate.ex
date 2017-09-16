@@ -23,9 +23,7 @@ defmodule Etymbot.Authenticate do
 
   defp valid_tokens do
     [
-      "token",
-      System.get_env("SM_SLACK_TOKEN"),
-      System.get_env("BOOTSY_SLACK_TOKEN")
+      System.get_env("SM_SLACK_TOKEN")
     ]
   end
 end
