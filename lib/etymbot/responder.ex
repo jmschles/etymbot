@@ -1,5 +1,3 @@
-require IEx
-
 defmodule Etymbot.Responder do
   import Plug.Conn
 
@@ -52,14 +50,14 @@ defmodule Etymbot.Responder do
   defp parse_headings(html_body) do
     html_body
     |> Floki.find("#dictionary dt a[href*=\"/index.php\"")
-    |> Enum.map(&(elem(&1,2)))
+    |> Enum.map(&(elem(&1, 2)))
     |> List.flatten
   end
 
   defp format_response([headings, etymologies]) do
     [headings, etymologies]
     |> List.zip
-    |> Enum.map(&("*" <> elem(&1,0) <> "*: " <> elem(&1, 1)))
+    |> Enum.map(&("*" <> elem(&1, 0) <> "*: " <> elem(&1, 1)))
     |> Enum.join("\n\n")
   end
 

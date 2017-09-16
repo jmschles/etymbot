@@ -11,8 +11,8 @@ defmodule Etymbot.Routes do
 
   get "/etym" do
     conn
-      |> put_resp_header("content-type","application/json")
-      |> send_resp(200, encoded_response(conn))
+    |> put_resp_header("content-type", "application/json")
+    |> send_resp(200, encoded_response(conn))
   end
 
   match _ do
