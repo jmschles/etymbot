@@ -1,21 +1,12 @@
 # Etymbot
 
-**TODO: Add description**
+A simple Slack bot server that receives a GET request with a query word, scrapes the [Online Etymology Dictionary](http://www.etymonline.com/), and posts the word's etymology back to Slack.
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `etymbot` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:etymbot, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/etymbot](https://hexdocs.pm/etymbot).
-
+- Configure your Slack slash command through the Slack admin UI
+- Set the `SM_SLACK_ETYM_TOKEN` environment variable to the value Slack provides
+- Install Elixir 1.5.1
+- Clone the repo
+- `cd` into the app directory and run `mix deps.get`
+- Start the server with `mix run --no-halt`
+- It's Erlang so it'll probably still be running in 2050
