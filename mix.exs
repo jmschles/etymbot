@@ -15,7 +15,7 @@ defmodule Etymbot.Mixfile do
   def application do
     [
       extra_applications: [:logger],
-      mod: {Etymbot.Application, [:cowboy, :plug, :poison, :httpoison]}
+      mod: {Etymbot.Application, [:cowboy, :plug, :poison, :httpoison, :floki]}
     ]
   end
 
@@ -24,8 +24,9 @@ defmodule Etymbot.Mixfile do
     [
       {:httpoison, "~> 0.13"},
       {:cowboy, "~> 1.0.4"},
-      {:plug, "~> 1.1.0"},
-      {:poison, "~> 1.4.0"}
+      {:plug, "~> 1.4.3"},
+      {:poison, "~> 1.4.0"},
+      {:floki, "~> 0.18.0"}
     ]
   end
 end

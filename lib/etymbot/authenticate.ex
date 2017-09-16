@@ -1,23 +1,31 @@
 defmodule Etymbot.Authenticate do
-  def init(opts), do: opts
+  import Plug.Conn
 
-  def call(conn, opts) do
-    conn
-    |> get_auth_headers
-    |> authenticate(opts[:token])
+  def init(options), do: options
+
+  def call(conn, _opts) do
+    if verify_token(conn) do
+      conn
+    else
+      conn
+      |> send_resp(401, "Invalid token")
+      |> halt
+    end
   end
 
-  def get_auth_headers(conn) do
-    {conn, Plug.Conn.get_req_header(conn, "authorization")}
+  defp verify_token(conn) do
+    Enum.member?(valid_tokens(), passed_token(conn))
   end
 
-  def authenticate({conn, [token]}, token) do
-    conn
+  defp passed_token(conn) do
+    fetch_query_params(conn).params["token"]
   end
 
-  def authenticate({conn, _}, token) do
-    conn
-    |> Plug.Conn.send_resp(401, "Not Authorised")
-    |> Plug.Conn.halt
+  defp valid_tokens do
+    [
+      "token",
+      System.get_env("SM_SLACK_TOKEN"),
+      System.get_env("BOOTSY_SLACK_TOKEN")
+    ]
   end
 end
