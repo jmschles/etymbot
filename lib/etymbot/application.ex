@@ -8,7 +8,7 @@ defmodule Etymbot.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      Plug.Adapters.Cowboy.child_spec(:http, Etymbot.Routes, [], port: 4567)
+      Plug.Adapters.Cowboy.child_spec(:http, Etymbot.Routes, [], port: 4555)
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
