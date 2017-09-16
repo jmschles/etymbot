@@ -8,5 +8,5 @@ A simple Slack bot server that receives a GET request with a query word, scrapes
 - Install Elixir 1.5.1
 - Clone the repo
 - `cd` into the app directory and run `mix deps.get`
-- Start the server with `mix run --no-halt`
+- Compile and start the server with `mix run --no-halt`
 - It's Erlang so it'll probably still be running in 2050
