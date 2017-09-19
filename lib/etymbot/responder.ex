@@ -14,7 +14,7 @@ defmodule Etymbot.Responder do
   end
 
   defp parse_command(conn) do
-    fetch_query_params(conn).params["text"]
+    fetch_query_params(conn).params["text"] |> String.replace(~r/\s+/, "+")
   end
 
   defp make_etymonline_request(word) do
